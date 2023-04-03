@@ -6,6 +6,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\DarkModeController;
 use App\Http\Controllers\ColorSchemeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\RoleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,9 @@ Route::middleware('auth')->group(function() {
     Route::patch('users-update/{id}', [UserController::class, 'update'])->name('users.update');
     Route::delete('users-delete/{id}', [UserController::class, 'destroy'])->name('users.destroy');
     Route::get('users-show/{id}', [UserController::class, 'show'])->name('users.show');
+
+    //roles
+    Route::get('roles', [RoleController::class, 'index'])->name('roles');
 
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/', [PageController::class, 'dashboardOverview1'])->name('dashboard-overview-1');

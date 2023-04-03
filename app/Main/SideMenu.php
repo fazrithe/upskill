@@ -158,7 +158,7 @@ class SideMenu
                     ],
                     'users-layout-2' => [
                         'icon' => '',
-                        'route_name' => 'users-layout-2',
+                        'route_name' => 'roles',
                         'params' => [
                             'layout' => 'side-menu'
                         ],
