@@ -57,6 +57,7 @@ Route::middleware('auth')->group(function() {
 
     Route::get('files', [FileController::class, 'index'])->name('files');
     Route::post('files-save', [FileController::class, 'store'])->name('files.save');
+    Route::delete('files-delete/{id}', [FileController::class, 'destroy'])->name('files.destroy');
 
     Route::post('file-categories-save', [FileCategoryController::class, 'store'])->name('file.categories.save');
     Route::delete('file-categories-delete', [FileCategoryController::class, 'deleteAll'])->name('file.categories.deleteall');

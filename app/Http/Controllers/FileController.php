@@ -22,11 +22,11 @@ class FileController extends Controller
      */
     public function index(Request $request)
     {
-        $data = File::orderBy('id','DESC')->paginate(6);
+        $data = File::orderBy('id','DESC')->paginate(8);
         $categories = FileCategory::all();
         $search = '';
         return view('pages.files.index',compact('data','search','categories'))
-            ->with('i', ($request->input('page', 1) - 1) * 6);
+            ->with('i', ($request->input('page', 1) - 1) * 8);
     }
 
      /**
@@ -162,9 +162,9 @@ class FileController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::findOrFail($id);
+        $user = File::findOrFail($id);
         $user->delete();
-        return redirect()->route('users')
-                        ->with('success','User deleted successfully');
+        return redirect()->route('files')
+                        ->with('success','Files deleted successfully');
     }
 }
