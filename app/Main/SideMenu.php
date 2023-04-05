@@ -91,7 +91,7 @@ class SideMenu
             ],
             'tryout-manager' => [
                 'icon' => 'file-text',
-                'route_name' => 'post',
+                'route_name' => 'tryouts',
                 'params' => [
                     'layout' => 'side-menu'
                 ],

@@ -9,6 +9,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\FileCategoryController;
+use App\Http\Controllers\TryoutController;
 use Spatie\Permission\Contracts\Role;
 
 /*
@@ -61,6 +62,8 @@ Route::middleware('auth')->group(function() {
 
     Route::post('file-categories-save', [FileCategoryController::class, 'store'])->name('file.categories.save');
     Route::delete('file-categories-delete', [FileCategoryController::class, 'deleteAll'])->name('file.categories.deleteall');
+
+    Route::get('tryouts', [TryoutController::class, 'index'])->name('tryouts');
 
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/', [PageController::class, 'dashboardOverview1'])->name('dashboard-overview-1');
