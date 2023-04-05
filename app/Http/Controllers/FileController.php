@@ -66,7 +66,7 @@ class FileController extends Controller
     {
         $this->validate($request, [
             'category' => 'required',
-            'file' => 'required|mimes:pdf|max:5048'
+            'file' => 'required|mimes:pdf|max:10000'
         ]);
 
         $file = $request->file('file');

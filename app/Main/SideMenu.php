@@ -89,6 +89,22 @@ class SideMenu
                 ],
                 'title' => 'File Manager'
             ],
+            'tryout-manager' => [
+                'icon' => 'file-text',
+                'route_name' => 'post',
+                'params' => [
+                    'layout' => 'side-menu'
+                ],
+                'title' => 'Tryout Manager'
+            ],
+            'post' => [
+                'icon' => 'file-text',
+                'route_name' => 'post',
+                'params' => [
+                    'layout' => 'side-menu'
+                ],
+                'title' => 'Post'
+            ],
             // 'file-manager' => [
             //     'icon' => 'hard-drive',
             //     'route_name' => 'file-manager',
@@ -112,14 +128,6 @@ class SideMenu
                     'layout' => 'side-menu'
                 ],
                 'title' => 'Chat'
-            ],
-            'post' => [
-                'icon' => 'file-text',
-                'route_name' => 'post',
-                'params' => [
-                    'layout' => 'side-menu'
-                ],
-                'title' => 'Post'
             ],
             'calendar' => [
                 'icon' => 'calendar',
