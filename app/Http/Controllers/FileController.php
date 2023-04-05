@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Arr;
 use App\Models\FileCategory;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class FileController extends Controller
 {
@@ -162,8 +163,16 @@ class FileController extends Controller
      */
     public function destroy($id)
     {
-        $user = File::findOrFail($id);
-        $user->delete();
+        $file = File::findOrFail($id);
+        if (file_exists(public_path($file->file_path))){
+            $filedeleted = unlink(public_path($file->file_path));
+            if ($filedeleted) {
+               echo "File deleted";
+            }
+         } else {
+            dd('Unable to delete the given file');
+         }
+         $file->delete();
         return redirect()->route('files')
                         ->with('success','Files deleted successfully');
     }

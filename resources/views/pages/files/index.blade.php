@@ -78,11 +78,11 @@
                                         </li>
                                         <li>
                                             {!! Form::open(['method' => 'DELETE','route' => ['files.destroy', $value->id],'style'=>'display:inline']) !!}
-                                            <a href="" class="dropdown-item">
+                                            <div class="dropdown-item">
 
                                             <i data-feather="trash" class="w-4 h-4 mr-2"></i>{!! Form::submit('Delete', ['class' => '']) !!}
 
-                                            </a>
+                                            </div>
                                             {!! Form::close() !!}
                                         </li>
                                     </ul>
