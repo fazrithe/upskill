@@ -5,6 +5,9 @@
 @endsection
 
 @section('subcontent')
+@foreach ($errors->all() as $error)
+<li class="text-danger">{{ $error }}</li>
+@endforeach
     <div class="grid grid-cols-12 gap-6 mt-8">
         <div class="col-span-12 lg:col-span-3 2xl:col-span-2">
             <h2 class="intro-y text-lg font-medium mr-auto mt-2">File Manager</h2>
@@ -221,7 +224,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-body p-10">
-                {!! Form::open(array('route' => 'files.save','method'=>'POST')) !!}
+                {!! Form::open(array('route' => 'files.save','method'=>'POST','enctype'=>'multipart/form-data')) !!}
                 @csrf
                 <div id="input" class="p-5">
                     <div class="preview">
@@ -229,12 +232,17 @@
                             <label for="regular-form-1" class="form-label">Category</label><br>
                             <select name="category" class="form-control">
                                 @foreach ($categories as $key => $cat)
-                                <option>{{ $cat->name }}</option>
+                                <option value="{{ $cat->id }}">{{ $cat->name }}</option>
                                 @endforeach
                             </select>
                         </div><br>
+                        <div>
+                            <label for="regular-form-1" class="form-label">Name</label><br>
+                            <input type="text" name="name" class="form-control">
+                        </div><br>
                         <div class="fallback">
-                            <input name="file" type="file" class="form-controll" />
+                            <input name="file" id="file" type="file" class="form-controll" /><br>
+                            <label class="text-danger">PDF</label>
                         </div>
                         <button class="btn btn-primary mt-5">Save</button>
                     </div>

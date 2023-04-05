@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Arr;
 use App\Models\FileCategory;
+use Illuminate\Support\Facades\Auth;
 
 class FileController extends Controller
 {
@@ -63,16 +64,22 @@ class FileController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required',
-            'file' => 'required|mimes:csv,txt,xlx,xls,pdf|max:2048'
+            'category' => 'required',
+            'file' => 'required|mimes:pdf|max:5048'
         ]);
 
+        $file = $request->file('file');
         $fileModel = new File;
         if($request->file()) {
             $fileName = time().'_'.$request->file->getClientOriginalName();
             $filePath = $request->file('file')->storeAs('uploads', $fileName, 'public');
-            $fileModel->name = time().'_'.$request->file->getClientOriginalName();
+            $fileModel->category_id = $request->category;
+            $fileModel->user_id = Auth::user()->id;
+            $fileModel->name = $request->name;
+            $fileModel->file_name = time().'_'.$request->file->getClientOriginalName();
             $fileModel->file_path = '/storage/' . $filePath;
+            $fileModel->type = $file->getClientOriginalExtension();
+            $fileModel->size = $file->getSize();
             $fileModel->save();
             return back()
             ->with('success','File has been uploaded.')
