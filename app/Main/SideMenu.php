@@ -83,12 +83,20 @@ class SideMenu
             ],
             'file-manager' => [
                 'icon' => 'hard-drive',
-                'route_name' => 'file-manager',
+                'route_name' => 'files',
                 'params' => [
                     'layout' => 'side-menu'
                 ],
                 'title' => 'File Manager'
             ],
+            // 'file-manager' => [
+            //     'icon' => 'hard-drive',
+            //     'route_name' => 'file-manager',
+            //     'params' => [
+            //         'layout' => 'side-menu'
+            //     ],
+            //     'title' => 'File Manager'
+            // ],
             'point-of-sale' => [
                 'icon' => 'credit-card',
                 'route_name' => 'point-of-sale',

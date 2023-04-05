@@ -174,7 +174,7 @@ class Faker
             [ 'file_name' => 'Laravel 7', 'type' => 'Empty Folder', 'size' => '120 MB' ],
             [ 'file_name' => Faker::fakeImages()->first(), 'type' => 'Image', 'size' => '1.2 MB' ],
             [ 'file_name' => 'Repository', 'type' => 'Folder', 'size' => '20 KB' ],
-            [ 'file_name' => 'Resources.txt', 'type' => 'TXT', 'size' => '2.2 MB' ],
+            [ 'file_name' => 'Resources.pdf', 'type' => 'PDF', 'size' => '2.2 MB' ],
             [ 'file_name' => 'Routes.php', 'type' => 'PHP', 'size' => '1 KB' ],
             [ 'file_name' => 'Dota 2', 'type' => 'Folder', 'size' => '112 GB' ],
             [ 'file_name' => 'Documentation', 'type' => 'Empty Folder', 'size' => '4 MB' ],

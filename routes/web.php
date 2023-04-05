@@ -7,6 +7,9 @@ use App\Http\Controllers\DarkModeController;
 use App\Http\Controllers\ColorSchemeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\FileController;
+use App\Http\Controllers\FileCategoryController;
+use Spatie\Permission\Contracts\Role;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,9 +42,24 @@ Route::middleware('auth')->group(function() {
     Route::patch('users-update/{id}', [UserController::class, 'update'])->name('users.update');
     Route::delete('users-delete/{id}', [UserController::class, 'destroy'])->name('users.destroy');
     Route::get('users-show/{id}', [UserController::class, 'show'])->name('users.show');
+    Route::get('users-search/search', [UserController::class, 'search'])->name('users.search');
 
     //roles
     Route::get('roles', [RoleController::class, 'index'])->name('roles');
+    Route::get('roles-edit/{id}', [RoleController::class, 'edit'])->name('roles.edit');
+    Route::get('roles-create', [RoleController::class, 'create'])->name('roles.create');
+    Route::post('roles-save', [RoleController::class, 'store'])->name('roles.save');
+    Route::patch('roles-update/{id}', [RoleController::class, 'update'])->name('roles.update');
+    Route::delete('roles-delete/{id}', [RoleController::class, 'destroy'])->name('roles.destroy');
+    Route::get('roles-show/{id}', [RoleController::class, 'show'])->name('roles.show');
+    Route::get('roles-search/search', [RoleController::class, 'search'])->name('roles.search');
+
+
+    Route::get('files', [FileController::class, 'index'])->name('files');
+    Route::post('files-save', [FileController::class, 'store'])->name('files.save');
+
+    Route::post('file-categories-save', [FileCategoryController::class, 'store'])->name('file.categories.save');
+    Route::delete('file-categories-delete', [FileCategoryController::class, 'deleteAll'])->name('file.categories.deleteall');
 
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/', [PageController::class, 'dashboardOverview1'])->name('dashboard-overview-1');

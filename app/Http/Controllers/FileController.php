@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\File;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Arr;
+use App\Models\FileCategory;
 
-class UserController extends Controller
+class FileController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,9 +21,10 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $data = User::orderBy('id','DESC')->paginate(6);
+        $data = File::orderBy('id','DESC')->paginate(6);
+        $categories = FileCategory::all();
         $search = '';
-        return view('pages.users.index',compact('data','search'))
+        return view('pages.files.index',compact('data','search','categories'))
             ->with('i', ($request->input('page', 1) - 1) * 6);
     }
 
@@ -61,19 +64,20 @@ class UserController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|same:confirm-password',
-            'roles' => 'required'
+            'file' => 'required|mimes:csv,txt,xlx,xls,pdf|max:2048'
         ]);
 
-        $input = $request->all();
-        $input['password'] = Hash::make($input['password']);
-
-        $user = User::create($input);
-        $user->assignRole($request->input('roles'));
-
-        return redirect()->route('users')
-                        ->with('success','User created successfully');
+        $fileModel = new File;
+        if($request->file()) {
+            $fileName = time().'_'.$request->file->getClientOriginalName();
+            $filePath = $request->file('file')->storeAs('uploads', $fileName, 'public');
+            $fileModel->name = time().'_'.$request->file->getClientOriginalName();
+            $fileModel->file_path = '/storage/' . $filePath;
+            $fileModel->save();
+            return back()
+            ->with('success','File has been uploaded.')
+            ->with('file', $fileName);
+        }
     }
 
     /**

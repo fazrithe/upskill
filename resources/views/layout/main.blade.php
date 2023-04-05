@@ -11,7 +11,7 @@
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBG7gNHAhDzgYmq4-EHvM4bqW1DNj2UCuk&libraries=places"></script>
         <script src="{{ mix('dist/js/app.js') }}"></script>
         <!-- END: JS Assets-->
-
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         @yield('script')
     </body>
 @endsection
