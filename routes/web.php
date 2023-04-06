@@ -66,6 +66,9 @@ Route::middleware('auth')->group(function() {
     Route::get('tryouts', [TryoutController::class, 'index'])->name('tryouts');
     Route::get('tryouts-create', [TryoutController::class, 'create'])->name('tryouts.create');
     Route::post('tryouts-save', [TryoutController::class, 'store'])->name('tryouts.save');
+    Route::get('tryouts-edit/{id}', [TryoutController::class, 'edit'])->name('tryouts.edit');
+    Route::patch('tryouts-update/{id}', [TryoutController::class, 'update'])->name('tryouts.update');
+    Route::delete('tryouts-delete/{id}', [TryoutController::class, 'destroy'])->name('tryouts.destroy');
 
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/', [PageController::class, 'dashboardOverview1'])->name('dashboard-overview-1');

@@ -25,6 +25,7 @@
                 <thead>
                     <tr>
                         <th class="whitespace-nowrap">No</th>
+                        <th></th>
                         <th class="whitespace-nowrap">Name</th>
                         <th class="text-center whitespace-nowrap">Actions</th>
                     </tr>
@@ -36,14 +37,21 @@
                                 {{ ++$i }}
                             </td>
                             <td>
+                                <div class="flex">
+                                    <div class="w-10 h-10 image-fit zoom-in">
+                                        <img alt="Icewall Tailwind HTML Admin Template" class="tooltip rounded-full" src="{{ asset($value->file_path) }}" title="{{ $value->name }}">
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
                                 {{ $value->name }}
                             </td>
                             <td class="table-report__action w-56">
                                 <div class="flex justify-center items-center">
-                                    <a class="flex items-center mr-3" href="{{ route('roles.edit',$value->id) }}">
+                                    <a class="flex items-center mr-3" href="{{ route('tryouts.edit',$value->id) }}">
                                         <i data-feather="check-square" class="w-4 h-4 mr-1"></i> Edit
                                     </a>
-                                    {!! Form::open(['method' => 'DELETE','route' => ['roles.destroy', $value->id],'style'=>'display:inline']) !!}
+                                    {!! Form::open(['method' => 'DELETE','route' => ['tryouts.destroy', $value->id],'style'=>'display:inline']) !!}
                                         {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
                                     {!! Form::close() !!}
                                 </div>
