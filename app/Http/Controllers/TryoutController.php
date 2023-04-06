@@ -132,5 +132,25 @@ class TryoutController extends Controller
         }
     }
 
-
+     /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $file = Tryout::findOrFail($id);
+        if (file_exists(public_path($file->file_path))){
+            $filedeleted = unlink(public_path($file->file_path));
+            if ($filedeleted) {
+               echo "File deleted";
+            }
+         } else {
+            dd('Unable to delete the given file');
+         }
+         $file->delete();
+        return redirect()->route('tryouts')
+                        ->with('success','Tryout deleted successfully');
+    }
 }
