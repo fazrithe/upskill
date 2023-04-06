@@ -74,4 +74,63 @@ class TryoutController extends Controller
         }
     }
 
+     /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $tryout = Tryout::find($id);
+        $categories = FileCategory::all();
+        $publish = [
+            'on'=> 'on',
+            'off'=> 'off'
+        ];
+        return view('pages.tryouts.edit',compact('tryout','categories','publish'));
+    }
+
+       /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $this->validate($request, [
+            'category' => 'required'
+        ]);
+
+        $file = $request->file('file');
+        if($request->file()) {
+            $fileModel = new Tryout();
+            $fileName = time().'_'.$request->file->getClientOriginalName();
+            $filePath = $request->file('file')->storeAs('images', $fileName, 'public');
+            $fileModel->category_id = $request->category;
+            $fileModel->user_id = Auth::user()->id;
+            $fileModel->name = $request->name;
+            $fileModel->file_name = time().'_'.$request->file->getClientOriginalName();
+            $fileModel->file_path = '/storage/' . $filePath;
+            $fileModel->type = $file->getClientOriginalExtension();
+            $fileModel->size = $file->getSize();
+            $fileModel->publish = $request->publish;
+            $fileModel->save();
+            return redirect()->route('tryouts')
+            ->with('success','Tryout created successfully');
+        }else{
+            $fileModel = Tryout::find($id);
+            $fileModel->category_id = $request->category;
+            $fileModel->user_id = Auth::user()->id;
+            $fileModel->name = $request->name;
+            $fileModel->publish = $request->publish;
+            $fileModel->save();
+            return redirect()->route('tryouts')
+            ->with('success','Tryout created successfully');
+        }
+    }
+
+
 }
