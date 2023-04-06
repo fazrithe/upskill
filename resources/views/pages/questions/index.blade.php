@@ -8,7 +8,7 @@
     <h2 class="intro-y text-lg font-medium mt-10">Data Question</h2>
     <div class="grid grid-cols-12 gap-6 mt-5">
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
-            <a class="btn btn-primary shadow-md mr-2" href="{{ route('questions.create') }}">Add New Question</a>
+            <a class="btn btn-primary shadow-md mr-2" href="{{ route('questions.create',$id) }}">Add New Question</a>
             <div class="hidden md:block mx-auto text-slate-500">Showing 1 to 10 of {{ count($data) }} entries</div>
             <div class="w-full sm:w-auto mt-3 sm:mt-0 sm:ml-auto md:ml-0">
                 <div class="w-56 relative text-slate-500">
@@ -25,8 +25,8 @@
                 <thead>
                     <tr>
                         <th class="whitespace-nowrap">No</th>
-                        <th></th>
-                        <th class="whitespace-nowrap">Name</th>
+                        <th>User</th>
+                        <th class="whitespace-nowrap">Question</th>
                         <th class="text-center whitespace-nowrap">Actions</th>
                     </tr>
                 </thead>
@@ -37,17 +37,10 @@
                                 {{ ++$i }}
                             </td>
                             <td>
-                                <div class="flex">
-                                    <a class="btn btn-primary" href="{{ route('tryouts.edit',$value->id) }}" title="Add Question">
-                                        Question
-                                    </a>
-                                    <div class="w-10 h-10 image-fit zoom-in">
-                                        <img alt="Icewall Tailwind HTML Admin Template" class="tooltip rounded-full" src="{{ asset($value->file_path) }}" title="{{ $value->name }}">
-                                    </div>
-                                </div>
+                                s
                             </td>
                             <td>
-                                {{ $value->name }}
+                                {{ $value->question }}
                             </td>
                             <td class="table-report__action w-56">
                                 <div class="flex justify-center items-center">

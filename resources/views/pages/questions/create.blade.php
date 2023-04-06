@@ -7,41 +7,10 @@
 @section('subcontent')
     <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
         <h2 class="text-lg font-medium mr-auto">Add New Question</h2>
-        <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
-            <button type="button" class="btn box mr-2 flex items-center ml-auto sm:ml-0">
-                <i class="w-4 h-4 mr-2" data-feather="eye"></i> Preview
-            </button>
-            <div class="dropdown">
-                <button class="dropdown-toggle btn btn-primary shadow-md flex items-center" aria-expanded="false" data-tw-toggle="dropdown">
-                    Save <i class="w-4 h-4 ml-2" data-feather="chevron-down"></i>
-                </button>
-                <div class="dropdown-menu w-40">
-                    <ul class="dropdown-content">
-                        <li>
-                            <a href="" class="dropdown-item">
-                                <i data-feather="file-text" class="w-4 h-4 mr-2"></i> As New Post
-                            </a>
-                        </a>
-                        <li>
-                            <a href="" class="dropdown-item">
-                                <i data-feather="file-text" class="w-4 h-4 mr-2"></i> As Draft
-                            </a>
-                        </a>
-                        <li>
-                            <a href="" class="dropdown-item">
-                                <i data-feather="file-text" class="w-4 h-4 mr-2"></i> Export to PDF
-                            </a>
-                        </a>
-                        <li>
-                            <a href="" class="dropdown-item">
-                                <i data-feather="file-text" class="w-4 h-4 mr-2"></i> Export to Word
-                            </a>
-                        </a>
-                    </ul>
-                </div>
-            </div>
-        </div>
     </div>
+
+    {!! Form::open(array('route' => 'questions.save','method'=>'POST','enctype'=>'multipart/form-data')) !!}
+    @csrf
     <div class="pos intro-y grid grid-cols-12 gap-5 mt-5">
         <!-- BEGIN: Post Content -->
         <div class="intro-y col-span-12 lg:col-span-8">
@@ -53,9 +22,7 @@
                                 Question
                             </div>
                             <div class="mt-5">
-                                <div class="editor">
-                                    <p>Write your question...</p>
-                                </div>
+                                <textarea class="editor" name="question" required><p>Write your question...</p></textarea>
                             </div>
                         </div>
                         <div class="border border-slate-200/60 dark:border-darkmode-400 rounded-md p-5 mt-5">
@@ -65,33 +32,23 @@
                             <div class="mt-5">
                                 <div>
                                     <label for="post-form-7" class="form-label font-medium">Anware A</label>
-                                    <div class="editor">
-                                        <p>Write your answare...</p>
-                                    </div>
+                                    <textarea class="editor" name="answare_a" required><p>Write your question...</p></textarea>
                                 </div>
                                 <div class="mt-3">
                                     <label for="post-form-7" class="form-label font-medium">Anware B</label>
-                                    <div class="editor">
-                                        <p>Write your answare...</p>
-                                    </div>
+                                    <textarea class="editor" name="answare_b" required><p>Write your question...</p></textarea>
                                 </div>
                                 <div class="mt-3">
                                     <label for="post-form-7" class="form-label font-medium">Anware C</label>
-                                    <div class="editor">
-                                        <p>Write your answare...</p>
-                                    </div>
+                                    <textarea class="editor" name="answare_c" required><p>Write your question...</p></textarea>
                                 </div>
                                 <div class="mt-3">
                                     <label for="post-form-7" class="form-label font-medium">Anware D</label>
-                                    <div class="editor">
-                                        <p>Write your answare...</p>
-                                    </div>
+                                    <textarea class="editor" name="answare_d" required><p>Write your question...</p></textarea>
                                 </div>
                                 <div class="mt-3">
                                     <label for="post-form-7" class="form-label font-medium">Anware E</label>
-                                    <div class="editor">
-                                        <p>Write your answare...</p>
-                                    </div>
+                                    <textarea class="editor" name="answare_e" required><p>Write your question...</p></textarea>
                                 </div>
                             </div>
                         </div>
@@ -105,26 +62,26 @@
             <div class="intro-y box p-5">
                 <div>
                     <label class="form-label">Written By</label>
-                    <div>
-                        Alex
-                    </div>
-                </div>
-                <div class="mt-3">
-                    <label for="post-form-2" class="form-label">Post Date</label>
-                    <input type="text" class="datepicker form-control" id="post-form-2" data-single-mode="true">
+                        {{ Auth::user()->name }}
                 </div>
                 <div class="mt-3">
                     <label for="post-form-3" class="form-label">Tryout :</label>
-                    Menejerial
+                    {{ $tryout->name }}
+                    <input type="hidden" name="tryout_id" value="{{ $tryout->id }}">
                 </div>
                 <div class="form-check form-switch flex flex-col items-start mt-3">
                     <label for="post-form-5" class="form-check-label ml-0 mb-2">Published</label>
-                    <input id="post-form-5" class="form-check-input" type="checkbox">
+                    <input id="post-form-5" class="form-check-input" name="publish" type="checkbox" checked>
+                </div>
+                <div class="mt-3 text-center">
+                    <button class="btn btn-primary mt-5">Save</button>
                 </div>
             </div>
         </div>
         <!-- END: Post Info -->
     </div>
+
+    {!! Form::close() !!}
 @endsection
 
 @section('script')

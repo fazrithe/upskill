@@ -72,7 +72,8 @@ Route::middleware('auth')->group(function() {
     Route::delete('tryouts-delete/{id}', [TryoutController::class, 'destroy'])->name('tryouts.destroy');
 
     Route::get('questions/{id}', [QuestionController::class, 'index'])->name('questions');
-    Route::get('questions-create', [QuestionController::class, 'create'])->name('questions.create');
+    Route::get('questions-create/{id}', [QuestionController::class, 'create'])->name('questions.create');
+    Route::post('questions-save', [QuestionController::class, 'store'])->name('questions.save');
 
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/', [PageController::class, 'dashboardOverview1'])->name('dashboard-overview-1');
