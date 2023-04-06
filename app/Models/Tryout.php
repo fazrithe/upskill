@@ -15,6 +15,7 @@ class Tryout extends Model
         'file_name',
         'file_path',
         'type',
-        'size'
+        'size',
+        'publish'
     ];
 }

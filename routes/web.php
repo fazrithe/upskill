@@ -64,6 +64,8 @@ Route::middleware('auth')->group(function() {
     Route::delete('file-categories-delete', [FileCategoryController::class, 'deleteAll'])->name('file.categories.deleteall');
 
     Route::get('tryouts', [TryoutController::class, 'index'])->name('tryouts');
+    Route::get('tryouts-create', [TryoutController::class, 'create'])->name('tryouts.create');
+    Route::post('tryouts-save', [TryoutController::class, 'store'])->name('tryouts.save');
 
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/', [PageController::class, 'dashboardOverview1'])->name('dashboard-overview-1');
