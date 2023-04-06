@@ -23,11 +23,11 @@ class TryoutController extends Controller
      */
     public function index(Request $request)
     {
-        $data = Tryout::orderBy('id','DESC')->paginate(8);
+        $data = Tryout::orderBy('id','DESC')->paginate(10);
         $categories = FileCategory::all();
         $search = '';
         return view('pages.tryouts.index',compact('data','search','categories'))
-            ->with('i', ($request->input('page', 1) - 1) * 8);
+            ->with('i', ($request->input('page', 1) - 1) * 10);
     }
 
 

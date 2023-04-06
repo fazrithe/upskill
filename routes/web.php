@@ -10,6 +10,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\FileCategoryController;
 use App\Http\Controllers\TryoutController;
+use App\Http\Controllers\QuestionController;
 use Spatie\Permission\Contracts\Role;
 
 /*
@@ -69,6 +70,9 @@ Route::middleware('auth')->group(function() {
     Route::get('tryouts-edit/{id}', [TryoutController::class, 'edit'])->name('tryouts.edit');
     Route::patch('tryouts-update/{id}', [TryoutController::class, 'update'])->name('tryouts.update');
     Route::delete('tryouts-delete/{id}', [TryoutController::class, 'destroy'])->name('tryouts.destroy');
+
+    Route::get('questions/{id}', [QuestionController::class, 'index'])->name('questions');
+    Route::get('questions-create', [QuestionController::class, 'create'])->name('questions.create');
 
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/', [PageController::class, 'dashboardOverview1'])->name('dashboard-overview-1');
