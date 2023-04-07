@@ -16,4 +16,9 @@ class Question extends Model
         'type',
         'publish'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

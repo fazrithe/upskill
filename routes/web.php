@@ -74,6 +74,9 @@ Route::middleware('auth')->group(function() {
     Route::get('questions/{id}', [QuestionController::class, 'index'])->name('questions');
     Route::get('questions-create/{id}', [QuestionController::class, 'create'])->name('questions.create');
     Route::post('questions-save', [QuestionController::class, 'store'])->name('questions.save');
+    Route::get('questions-search/search', [QuestionController::class, 'search'])->name('questions.search');
+    Route::get('questions-edit/{id}', [QuestionController::class, 'edit'])->name('questions.edit');
+    Route::patch('questions-update/{id}', [QuestionController::class, 'update'])->name('questions.update');
 
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/', [PageController::class, 'dashboardOverview1'])->name('dashboard-overview-1');

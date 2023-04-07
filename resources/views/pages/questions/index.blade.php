@@ -12,7 +12,7 @@
             <div class="hidden md:block mx-auto text-slate-500">Showing 1 to 10 of {{ count($data) }} entries</div>
             <div class="w-full sm:w-auto mt-3 sm:mt-0 sm:ml-auto md:ml-0">
                 <div class="w-56 relative text-slate-500">
-                    {!! Form::open(array('route' => 'roles.search','method'=>'GET')) !!}
+                    {!! Form::open(array('route' => 'questions.search','method'=>'GET')) !!}
                         <input type="text" name="search" class="form-control w-56 box pr-10" placeholder="Search..." value="{{ $search }}">
                         <i class="w-4 h-4 absolute my-auto inset-y-0 mr-3 right-0" data-feather="search"></i>
                     {!! Form::close() !!}
@@ -37,14 +37,14 @@
                                 {{ ++$i }}
                             </td>
                             <td>
-                                s
+                                {{ $value->user->name }}
                             </td>
                             <td>
                                 {{ $value->question }}
                             </td>
                             <td class="table-report__action w-56">
                                 <div class="flex justify-center items-center">
-                                    <a class="flex items-center mr-3" href="{{ route('tryouts.edit',$value->id) }}">
+                                    <a class="flex items-center mr-3" href="{{ route('questions.edit',$value->id) }}">
                                         Edit
                                     </a>
                                     {!! Form::open(['method' => 'DELETE','route' => ['tryouts.destroy', $value->id],'style'=>'display:inline']) !!}

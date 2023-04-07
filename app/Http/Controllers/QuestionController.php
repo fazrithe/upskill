@@ -24,10 +24,29 @@ class QuestionController extends Controller
      */
     public function index(Request $request,$id)
     {
-        $data = Question::orderBy('id','DESC')->paginate(10);
+        $data = Question::with('user')->orderBy('id','DESC')->paginate(10);
         $search = '';
         return view('pages.questions.index',compact('data','search','id'))
             ->with('i', ($request->input('page', 1) - 1) * 10);
+    }
+
+     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function search(Request $request)
+    {
+        $search = $request->search;
+        $data = Question::where('question','like',"%".$search."%")->with('user')->orderBy('id','DESC')->paginate(10);
+        $question_id = Question::where('question','like',"%".$search."%")->first();
+        if(!empty($question_id)){
+            $id = $question_id->id;
+            return view('pages.questions.index',compact('data','search','id'))
+            ->with('i', ($request->input('page', 1) - 1) * 10);
+        }
+
+        return back();
     }
 
       /**
@@ -56,7 +75,47 @@ class QuestionController extends Controller
         $question->publish = $request->publish;
         $question->save();
         return redirect()->route('questions',$request->tryout_id)
-                         ->with('success','Role deleted successfully');
+                         ->with('success','Question created successfully');
+    }
+
+     /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $question = Question::find($id);
+        $tryout = Tryout::where('id',$id)->first();
+        $categories = FileCategory::all();
+        $publish = [
+            'on'=> 'on',
+            'off'=> 'off'
+        ];
+        return view('pages.questions.edit',compact('question','categories','publish','tryout'));
+    }
+
+     /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request,$id)
+    {
+        $question = Question::find($id);
+        $question->tryout_id = $request->tryout_id;
+        $question->user_id = Auth::user()->id;
+        $question->question = $request->question;
+        $question->type = 'text';
+        if($request->publish){
+            $question->publish = $request->publish;
+        }else{
+            $question->publish = 'off';
+        }
+        $question->save();
+        return redirect()->route('questions',$request->tryout_id)
+                         ->with('success','Question updated successfully');
     }
 
 }
