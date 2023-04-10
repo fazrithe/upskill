@@ -78,7 +78,8 @@ class QuestionController extends Controller
         $question->tryout_id = $request->tryout_id;
         $question->user_id = Auth::user()->id;
         $question->question = $request->question;
-        $question->answare = json_encode($answare);
+        $question->answare = json_encode(array($answare));
+        $question->correct = $request->correct;
         $question->type = 'text';
         $question->publish = $request->publish;
         $question->save();
@@ -95,13 +96,22 @@ class QuestionController extends Controller
     public function edit($id)
     {
         $question = Question::find($id);
-        $tryout = Tryout::where('id',$id)->first();
+        $tryout = Tryout::where('id',$question->tryout_id)->first();
         $categories = FileCategory::all();
         $publish = [
             'on'=> 'on',
             'off'=> 'off'
         ];
-        return view('pages.questions.edit',compact('question','categories','publish','tryout'));
+        foreach(json_decode($question->answare) as $key => $value){
+            $answare = [
+                'a' => $value->a,
+                'b' => $value->b,
+                'c' => $value->c,
+                'd' => $value->d,
+                'e' => $value->e
+            ];
+        }
+        return view('pages.questions.edit',compact('question','categories','publish','tryout','answare'));
     }
 
      /**
@@ -111,10 +121,19 @@ class QuestionController extends Controller
      */
     public function update(Request $request,$id)
     {
+        $answare = [
+            'a' => $request->answare_a,
+            'b' => $request->answare_b,
+            'c' => $request->answare_c,
+            'd' => $request->answare_d,
+            'e' => $request->answare_e
+        ];
         $question = Question::find($id);
         $question->tryout_id = $request->tryout_id;
         $question->user_id = Auth::user()->id;
         $question->question = $request->question;
+        $question->answare =  json_encode(array($answare));
+        $question->correct = $request->correct;
         $question->type = 'text';
         if($request->publish){
             $question->publish = $request->publish;

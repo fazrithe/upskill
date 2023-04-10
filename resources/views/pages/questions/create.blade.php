@@ -33,22 +33,52 @@
                                 <div>
                                     <label for="post-form-7" class="form-label font-medium">Anware A</label>
                                     <textarea class="editor" name="answare_a" required><p>Write your question...</p></textarea>
+                                    <div class="form-check mt-2">
+                                        <input class="form-check-input" value="a" type="radio" name="correct" checked id="flexRadioDefault1">
+                                        <label class="form-check-label" for="flexRadioDefault1">
+                                          Correct
+                                        </label>
+                                      </div>
                                 </div>
-                                <div class="mt-3">
+                                <div class="mt-5">
                                     <label for="post-form-7" class="form-label font-medium">Anware B</label>
                                     <textarea class="editor" name="answare_b" required><p>Write your question...</p></textarea>
+                                    <div class="form-check mt-2">
+                                        <input class="form-check-input" value="b" type="radio" name="correct" id="flexRadioDefault1">
+                                        <label class="form-check-label" for="flexRadioDefault1">
+                                          Correct
+                                        </label>
+                                      </div>
                                 </div>
-                                <div class="mt-3">
+                                <div class="mt-5">
                                     <label for="post-form-7" class="form-label font-medium">Anware C</label>
                                     <textarea class="editor" name="answare_c" required><p>Write your question...</p></textarea>
+                                    <div class="form-check mt-2">
+                                        <input class="form-check-input" value="c" type="radio" name="correct" id="flexRadioDefault1">
+                                        <label class="form-check-label" for="flexRadioDefault1">
+                                          Correct
+                                        </label>
+                                      </div>
                                 </div>
-                                <div class="mt-3">
+                                <div class="mt-5">
                                     <label for="post-form-7" class="form-label font-medium">Anware D</label>
                                     <textarea class="editor" name="answare_d" required><p>Write your question...</p></textarea>
+                                    <div class="form-check mt-2">
+                                        <input class="form-check-input" value="d" type="radio" name="correct" id="flexRadioDefault1">
+                                        <label class="form-check-label" for="flexRadioDefault1">
+                                          Correct
+                                        </label>
+                                      </div>
                                 </div>
-                                <div class="mt-3">
+                                <div class="mt-5">
                                     <label for="post-form-7" class="form-label font-medium">Anware E</label>
                                     <textarea class="editor" name="answare_e" required><p>Write your question...</p></textarea>
+                                    <div class="form-check mt-2">
+                                        <input class="form-check-input" value="e" type="radio" name="correct" id="flexRadioDefault1">
+                                        <label class="form-check-label" for="flexRadioDefault1">
+                                          Correct
+                                        </label>
+                                      </div>
                                 </div>
                             </div>
                         </div>
