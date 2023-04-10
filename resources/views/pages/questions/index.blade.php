@@ -47,7 +47,7 @@
                                     <a class="flex items-center mr-3" href="{{ route('questions.edit',$value->id) }}">
                                         Edit
                                     </a>
-                                    {!! Form::open(['method' => 'DELETE','route' => ['tryouts.destroy', $value->id],'style'=>'display:inline']) !!}
+                                    {!! Form::open(['method' => 'DELETE','route' => ['questions.destroy', $value->id],'style'=>'display:inline']) !!}
                                         {!! Form::submit('Delete', ['class' => '']) !!}
                                     {!! Form::close() !!}
                                 </div>

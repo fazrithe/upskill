@@ -67,10 +67,18 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
+        $answare = [
+            'a' => $request->answare_a,
+            'b' => $request->answare_b,
+            'c' => $request->answare_c,
+            'd' => $request->answare_d,
+            'e' => $request->answare_e
+        ];
         $question = new Question();
         $question->tryout_id = $request->tryout_id;
         $question->user_id = Auth::user()->id;
         $question->question = $request->question;
+        $question->answare = json_encode($answare);
         $question->type = 'text';
         $question->publish = $request->publish;
         $question->save();
@@ -116,6 +124,19 @@ class QuestionController extends Controller
         $question->save();
         return redirect()->route('questions',$request->tryout_id)
                          ->with('success','Question updated successfully');
+    }
+
+      /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $question = Question::findOrFail($id);
+        $question->delete();
+        return redirect()->back();
     }
 
 }
