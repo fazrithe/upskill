@@ -161,11 +161,24 @@ class TryoutController extends Controller
      */
     public function list(Request $request)
     {
-        $data = Tryout::orderBy('id','DESC')->paginate(1);
+        $data = Tryout::with('user')->orderBy('id','DESC')->get();
         $categories = FileCategory::all();
         $search = '';
         return view('pages.tryouts.list',compact('data','search','categories'))
             ->with('i', ($request->input('page', 1) - 1) * 10);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function view($id)
+    {
+        $data = Tryout::where('id',$id)->with('user')->orderBy('id','DESC')->get();
+        return $data;
+        $categories = FileCategory::all();
+        return view('pages.tryouts.view',compact('data','categories'));
     }
 
 }

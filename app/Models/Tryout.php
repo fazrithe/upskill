@@ -18,4 +18,9 @@ class Tryout extends Model
         'size',
         'publish'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

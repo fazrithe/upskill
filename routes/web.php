@@ -71,7 +71,8 @@ Route::middleware('auth')->group(function() {
     Route::patch('tryouts-update/{id}', [TryoutController::class, 'update'])->name('tryouts.update');
     Route::delete('tryouts-delete/{id}', [TryoutController::class, 'destroy'])->name('tryouts.destroy');
 
-    Route::get('tryout-lists', [TryoutController::class, 'list'])->name('tryout.lists');
+    Route::get('tryout-lists', [TryoutController::class, 'list'])->name('tryouts.lists');
+    Route::get('tryouts-view/{id}', [TryoutController::class, 'view'])->name('tryouts.view');
 
     Route::get('questions/{id}', [QuestionController::class, 'index'])->name('questions');
     Route::get('questions-create/{id}', [QuestionController::class, 'create'])->name('questions.create');

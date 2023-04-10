@@ -13,16 +13,16 @@
     </div>
     <div class="intro-y grid grid-cols-12 gap-6 mt-5">
         <!-- BEGIN: Blog Layout -->
-        @foreach (array_slice($fakers, 0, 9) as $faker)
+        @foreach ($data as $value)
             <div class="intro-y col-span-12 md:col-span-6 xl:col-span-4 box">
                 <div class="flex items-center border-b border-slate-200/60 dark:border-darkmode-400 px-5 py-4">
                     <div class="w-10 h-10 flex-none image-fit">
-                        <img alt="Icewall Tailwind HTML Admin Template" class="rounded-full" src="{{ asset('dist/images/' . $faker['photos'][0]) }}">
+                        <img alt="Icewall Tailwind HTML Admin Template" class="rounded-full" src="{{ $value->user->photo }}">
                     </div>
                     <div class="ml-3 mr-auto">
-                        <a href="" class="font-medium">{{ $faker['users'][0]['name'] }}</a>
+                        <a href="" class="font-medium">{{ $value->user->name }}</a>
                         <div class="flex text-slate-500 truncate text-xs mt-0.5">
-                            <a class="text-primary inline-block truncate" href="">{{ $faker['products'][0]['category'] }}</a> <span class="mx-1">
+                            <a class="text-primary inline-block truncate" href=""></a> <span class="mx-1">
                         </div>
                     </div>
                     <div class="dropdown ml-3">
@@ -47,20 +47,14 @@
                 </div>
                 <div class="p-5">
                     <div class="h-40 2xl:h-56 image-fit">
-                        <img alt="Icewall Tailwind HTML Admin Template" class="rounded-md" src="{{ asset('dist/images/' . $faker['images'][0]) }}">
+                        <img alt="Icewall Tailwind HTML Admin Template" class="rounded-md" src="{{ $value->file_path }}">
                     </div>
-                    <a href="" class="block font-medium text-base mt-5">{{ $faker['news'][0]['title'] }}</a>
+                    <a href="" class="block font-medium text-base mt-5">{{ $value->name }}</a>
                 </div>
                 <div class="flex items-center px-5 py-3 border-t border-slate-200/60 dark:border-darkmode-400">
                     <div class="intro-x flex mr-2">
                         <div class="intro-x w-8 h-8 image-fit">
-                            <img alt="Icewall Tailwind HTML Admin Template" class="rounded-full border border-white zoom-in tooltip" src="{{ asset('dist/images/' . $faker['photos'][0]) }}" title="{{ $faker['users'][0]['name'] }}">
-                        </div>
-                        <div class="intro-x w-8 h-8 image-fit -ml-4">
-                            <img alt="Icewall Tailwind HTML Admin Template" class="rounded-full border border-white zoom-in tooltip" src="{{ asset('dist/images/' . $faker['photos'][1]) }}" title="{{ $faker['users'][1]['name'] }}">
-                        </div>
-                        <div class="intro-x w-8 h-8 image-fit -ml-4">
-                            <img alt="Icewall Tailwind HTML Admin Template" class="rounded-full border border-white zoom-in tooltip" src="{{ asset('dist/images/' . $faker['photos'][2]) }}" title="{{ $faker['users'][2]['name'] }}">
+                            <img alt="Icewall Tailwind HTML Admin Template" class="rounded-full border border-white zoom-in tooltip" src="" title="">
                         </div>
                     </div>
                     <a href="" class="intro-x w-8 h-8 flex items-center justify-center rounded-full text-primary bg-primary/10 dark:bg-darkmode-300 dark:text-slate-300 ml-auto tooltip" title="Share">
@@ -70,12 +64,12 @@
                 <div class="px-5 pt-3 pb-5 border-t border-slate-200/60 dark:border-darkmode-400">
                     <div class="w-full flex text-slate-500 text-xs sm:text-sm">
                         <div class="mr-2">
-                            Have Done: <span class="font-medium">{{ $faker['totals'][0] }}</span>
+                            Have Done: <span class="font-medium"></span>
                         </div>
                     </div>
                     <div class="w-full flex items-center mt-3">
                         <div class="">
-                            <a href="#" class="btn btn-primary">View</a>
+                            <a href="" class="btn btn-primary">View</a>
                         </div>
                         <div class="ml-4">
                             <a href="#" class="btn btn-danger">Score</a>

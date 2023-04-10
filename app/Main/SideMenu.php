@@ -39,7 +39,7 @@ class SideMenu
             ],
             'tryout' => [
                 'icon' => 'file-text',
-                'route_name' => 'tryout.lists',
+                'route_name' => 'tryouts.lists',
                 'params' => [
                     'layout' => 'side-menu'
                 ],
