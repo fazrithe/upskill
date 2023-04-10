@@ -74,7 +74,12 @@
                         </div>
                     </div>
                     <div class="w-full flex items-center mt-3">
-                        <a href="" class="btn btn-primary">View</a>
+                        <div class="">
+                            <a href="#" class="btn btn-primary">View</a>
+                        </div>
+                        <div class="ml-4">
+                            <a href="#" class="btn btn-danger">Score</a>
+                        </div>
                     </div>
                 </div>
             </div>
