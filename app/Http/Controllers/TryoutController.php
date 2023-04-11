@@ -188,9 +188,10 @@ class TryoutController extends Controller
      */
     public function test(Request $request,$id)
     {
-        $data = Question::where('tryout_id',$id)->with('user')->orderBy('id','DESC')->paginate(1);
+        $data = Question::where('tryout_id',$id)->with('user')->orderBy('id','ASC')->paginate(1);
+        $data_count = Question::where('tryout_id',$id)->with('user')->orderBy('id','ASC')->get();
         $categories = FileCategory::all();
-        return view('pages.tryouts.test',compact('data','categories'))
+        return view('pages.tryouts.test',compact('data','categories','data_count'))
                     ->with('i', ($request->input('page', 1) - 1) * 1);
     }
 
