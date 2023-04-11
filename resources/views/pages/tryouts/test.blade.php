@@ -20,11 +20,11 @@
                     $i = 0;
                 @endphp
                     @foreach($data_count as $val)
-                        {{-- @if($val->id == 16)
-                                <a href="{{ $url.'?page=' }}{{$i++ + 1}}" class="intro-y w-10 h-10 rounded-full btn btn-primary mx-2 mb-2">{{ $i }}</a>
-                            @else --}}
-                                <a href="{{ $url.'?page=' }}{{$i++ + 1}}" class="intro-y w-10 h-10 rounded-full btn bg-slate-100 dark:bg-darkmode-400 dark:border-darkmode-400 text-slate-500 mx-2 mb-2">{{ $i }}</a>
-                            {{-- @endif --}}
+                        @if($val->question_id != null)
+                            <a href="{{ $url.'?page=' }}{{$i++ + 1}}" class="intro-y w-10 h-10 rounded-full btn btn-primary mx-2 mb-2">{{ $i }}</a>
+                        @else
+                            <a href="{{ $url.'?page=' }}{{$i++ + 1}}" class="intro-y w-10 h-10 rounded-full btn bg-slate-100 dark:bg-darkmode-400 dark:border-darkmode-400 text-slate-500 mx-2 mb-2">{{ $i }}</a>
+                        @endif
                     @endforeach
             </div>
           </div>

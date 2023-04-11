@@ -192,7 +192,11 @@ class TryoutController extends Controller
     public function test(Request $request,$id)
     {
         $data = Question::where('tryout_id',$id)->with('user')->orderBy('id','ASC')->paginate(1);
-        $data_count = Question::where('tryout_id',$id)->with('user')->orderBy('id','ASC')->get();
+        $data_count = Question::where('questions.tryout_id',$id)
+                    ->select('questions.id','user_answers.question_id')
+                    ->leftjoin('user_answers', 'user_answers.question_id', '=', 'questions.id')
+                    ->orderBy('id','ASC')
+                    ->get();
         $answers = UserAnswer::where('tryout_id',$id)->where('user_id',Auth::user()->id)->orderBy('id','ASC')->get();
         $categories = FileCategory::all();
         return view('pages.tryouts.test',compact('data','categories','data_count','answers'))
