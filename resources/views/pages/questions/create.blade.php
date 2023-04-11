@@ -38,6 +38,12 @@
                                         <label class="form-check-label" for="flexRadioDefault1">
                                           Correct
                                         </label>
+                                        <div class="ml-4 form-group row">
+                                            <label>Score</label>
+                                            <div class="col-xs-2">
+                                                <input type="number" name="answer_a_score" class="form-control ml-4" width="10" value="0">
+                                            </div>
+                                        </div>
                                       </div>
                                 </div>
                                 <div class="mt-5">
@@ -48,7 +54,13 @@
                                         <label class="form-check-label" for="flexRadioDefault1">
                                           Correct
                                         </label>
-                                      </div>
+                                        <div class="ml-4 form-group row">
+                                            <label>Score</label>
+                                            <div class="col-xs-2">
+                                                <input type="number" name="answer_b_score" class="form-control ml-4" width="10" value="0">
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="mt-5">
                                     <label for="post-form-7" class="form-label font-medium">Answer C</label>
@@ -58,6 +70,12 @@
                                         <label class="form-check-label" for="flexRadioDefault1">
                                           Correct
                                         </label>
+                                        <div class="ml-4 form-group row">
+                                            <label>Score</label>
+                                            <div class="col-xs-2">
+                                                <input type="number" name="answer_c_score" class="form-control ml-4" width="10" value="0">
+                                            </div>
+                                        </div>
                                       </div>
                                 </div>
                                 <div class="mt-5">
@@ -68,6 +86,12 @@
                                         <label class="form-check-label" for="flexRadioDefault1">
                                           Correct
                                         </label>
+                                        <div class="ml-4 form-group row">
+                                            <label>Score</label>
+                                            <div class="col-xs-2">
+                                                <input type="number" name="answer_d_score" class="form-control ml-4" width="10" value="0">
+                                            </div>
+                                        </div>
                                       </div>
                                 </div>
                                 <div class="mt-5">
@@ -78,6 +102,12 @@
                                         <label class="form-check-label" for="flexRadioDefault1">
                                           Correct
                                         </label>
+                                        <div class="ml-4 form-group row">
+                                            <label>Score</label>
+                                            <div class="col-xs-2">
+                                                <input type="number" name="answer_e_score" class="form-control ml-4" width="10" value="0">
+                                            </div>
+                                        </div>
                                       </div>
                                 </div>
                             </div>

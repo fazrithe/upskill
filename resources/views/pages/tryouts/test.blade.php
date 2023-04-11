@@ -17,14 +17,11 @@
                     $last = 1;
                     $now = count($data_count);
                     $url = url()->current();
+                    $i = 0;
                 @endphp
-                @for ($i = $last; $i <= $now; $i++)
-                    @if($i == 3)
-                    <button class="intro-y w-10 h-10 rounded-full btn btn-primary mx-2 mb-2">3</button>
-                    @else
-                    <a href="{{ $url.'?page='.$i }}" class="intro-y w-10 h-10 rounded-full btn bg-slate-100 dark:bg-darkmode-400 dark:border-darkmode-400 text-slate-500 mx-2 mb-2">{{ $i }}</a>
-                    @endif
-                @endfor
+                    @foreach($data_count as $val)
+                        <a href="{{ $url.'?page=' }}{{$i++ + 1}}" class="intro-y w-10 h-10 rounded-full btn bg-slate-100 dark:bg-darkmode-400 dark:border-darkmode-400 text-slate-500 mx-2 mb-2">{{ $i }}</a>
+                    @endforeach
             </div>
           </div>
           <div class="col-8">
@@ -33,35 +30,37 @@
             @foreach($data as $key => $value)
 
                 {!! $value->question !!}
-                <input type="hidden" type="question_id_{{$value->id}}" value="{{ $value->id }}">
-                <input type="hidden" type="question_number_{{$value->id}}" value="{{ $data->currentPage(); }}">
+                <input type="hidden" name="tryout_id" value="{{ $value->tryout_id }}">
+                <input type="hidden" name="question_id" value="{{ $value->id }}">
+                <input type="hidden" name="question_number" value="{{ $data->currentPage(); }}">
+                <input type="hidden" name="question_url" value="{{ $data->nextPageUrl(); }}">
                 @foreach(json_decode($value->answer) as $value_answer)
                 <div class="mt-4">
-                    <input name="answer_{{$value->id}}" value="a" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                    <input name="answer" value="a" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
                     <label class="form-check-label" for="flexRadioDefault1">
                         {!! $value_answer->a !!}
                     </label>
                 </div>
                 <div class="mt-4">
-                <input name="answer_{{$value->id}}" value="b" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <input name="answer" value="b" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
                 <label class="form-check-label" for="flexRadioDefault1">
                     {!! $value_answer->b !!}
                 </label>
                 </div>
                 <div class="mt-4">
-                <input name="answer_{{$value->id}}" value="c" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <input name="answer" value="c" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
                 <label class="form-check-label" for="flexRadioDefault1">
                     {!! $value_answer->c !!}
                 </label>
                 </div>
                 <div class="mt-4">
-                <input name="answer_{{$value->id}}" value="d" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <input name="answer" value="d" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
                 <label class="form-check-label" for="flexRadioDefault1">
                     {!! $value_answer->d !!}
                 </label>
                 </div>
                 <div class="mt-4">
-                <input name="answer_{{$value->id}}" value="e" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <input name="answer" value="e" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
                 <label class="form-check-label" for="flexRadioDefault1">
                     {!! $value_answer->e !!}
                 </label>

@@ -5,21 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Question extends Model
+class UserAnswer extends Model
 {
     use HasFactory;
+
     protected $fillable = [
+        'question_id',
         'tryout_id',
         'user_id',
-        'question',
-        'answare',
-        'type',
-        'publish'
+        'answer',
+        'score'
     ];
-
-    public function user()
-    {
-        return $this->belongsTo(User::class, 'user_id');
-    }
-
 }

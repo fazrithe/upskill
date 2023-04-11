@@ -19,6 +19,7 @@ class CreateQuestionsTable extends Migration
             $table->integer('user_id');
             $table->text('question')->nullable();
             $table->text('answer')->nullable();
+            $table->text('score')->nullable();
             $table->text('correct')->nullable();
             $table->string('type');
             $table->string('publish');

@@ -14,6 +14,9 @@ use App\Models\Question;
 use App\Models\Tryout;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Symfony\Component\HttpFoundation\Session\Session;
+use App\Models\UserAnswer;
+use Faker\Provider\UserAgent;
 
 class TryoutController extends Controller
 {
@@ -190,9 +193,60 @@ class TryoutController extends Controller
     {
         $data = Question::where('tryout_id',$id)->with('user')->orderBy('id','ASC')->paginate(1);
         $data_count = Question::where('tryout_id',$id)->with('user')->orderBy('id','ASC')->get();
+        $answers = UserAnswer::where('tryout_id',$id)->where('user_id',Auth::user()->id)->orderBy('id','ASC')->get();
         $categories = FileCategory::all();
-        return view('pages.tryouts.test',compact('data','categories','data_count'))
+        return view('pages.tryouts.test',compact('data','categories','data_count','answers'))
                     ->with('i', ($request->input('page', 1) - 1) * 1);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function answer(Request $request)
+    {
+        $question = Question::where('id',$request->question_id)->with('user')->orderBy('id','DESC')->first();
+        $check = UserAnswer::where('question_id',$request->question_id)->first();
+        // return $check;
+
+        foreach(json_decode($question->score) as $key => $value){
+            if($request->answer == 'a'){
+                $score = $value->a;
+            }
+            if($request->answer == 'b'){
+                $score = $value->b;
+            }
+            if($request->answer == 'c'){
+                $score = $value->c;
+            }
+            if($request->answer == 'd'){
+                $score = $value->d;
+            }
+            if($request->answer == 'e'){
+                $score = $value->e;
+            }
+        }
+
+        if(empty($check)){
+            $answer = new UserAnswer();
+            $answer->question_id    = $request->question_id;
+            $answer->tryout_id      = $request->tryout_id;
+            $answer->user_id        = Auth::user()->id;
+            $answer->answer         = $request->answer;
+            $answer->score          = $score;
+            $answer->save();
+            return redirect(url($request->question_url));
+        }else{
+            $answer = UserAnswer::where('question_id', $request->question_id)->first();
+            $answer->question_id    = $request->question_id;
+            $answer->tryout_id      = $request->tryout_id;
+            $answer->user_id        = Auth::user()->id;
+            $answer->answer         = $request->answer;
+            $answer->score          = $score;
+            $answer->save();
+            return redirect(url($request->question_url));
+        }
     }
 
 }

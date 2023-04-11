@@ -74,11 +74,20 @@ class QuestionController extends Controller
             'd' => $request->answer_d,
             'e' => $request->answer_e
         ];
+
+        $score = [
+            'a' => $request->answer_a_score,
+            'b' => $request->answer_b_score,
+            'c' => $request->answer_c_score,
+            'd' => $request->answer_d_score,
+            'e' => $request->answer_e_score
+        ];
         $question = new Question();
         $question->tryout_id = $request->tryout_id;
         $question->user_id = Auth::user()->id;
         $question->question = $request->question;
         $question->answer = json_encode(array($answer));
+        $question->score = json_encode(array($score));
         $question->correct = $request->correct;
         $question->type = 'text';
         $question->publish = $request->publish;
