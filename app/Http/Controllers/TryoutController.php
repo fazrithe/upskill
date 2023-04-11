@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Arr;
 use App\Models\FileCategory;
+use App\Models\Question;
 use App\Models\Tryout;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -23,7 +24,7 @@ class TryoutController extends Controller
      */
     public function index(Request $request)
     {
-        $data = Tryout::orderBy('id','DESC')->paginate(1);
+        $data = Tryout::orderBy('id','DESC')->paginate(10);
         $categories = FileCategory::all();
         $search = '';
         return view('pages.tryouts.index',compact('data','search','categories'))
@@ -175,10 +176,22 @@ class TryoutController extends Controller
      */
     public function view($id)
     {
-        $data = Tryout::where('id',$id)->with('user')->orderBy('id','DESC')->get();
-        return $data;
+        $data = Tryout::where('id',$id)->with('user')->orderBy('id','DESC')->first();
         $categories = FileCategory::all();
         return view('pages.tryouts.view',compact('data','categories'));
+    }
+
+     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function test(Request $request,$id)
+    {
+        $data = Question::where('tryout_id',$id)->with('user')->orderBy('id','DESC')->paginate(1);
+        $categories = FileCategory::all();
+        return view('pages.tryouts.test',compact('data','categories'))
+                    ->with('i', ($request->input('page', 1) - 1) * 1);
     }
 
 }

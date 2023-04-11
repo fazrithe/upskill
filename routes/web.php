@@ -73,6 +73,7 @@ Route::middleware('auth')->group(function() {
 
     Route::get('tryout-lists', [TryoutController::class, 'list'])->name('tryouts.lists');
     Route::get('tryouts-view/{id}', [TryoutController::class, 'view'])->name('tryouts.view');
+    Route::get('tryouts-test/{id}', [TryoutController::class, 'test'])->name('tryouts.test');
 
     Route::get('questions/{id}', [QuestionController::class, 'index'])->name('questions');
     Route::get('questions-create/{id}', [QuestionController::class, 'create'])->name('questions.create');

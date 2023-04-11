@@ -67,18 +67,18 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        $answare = [
-            'a' => $request->answare_a,
-            'b' => $request->answare_b,
-            'c' => $request->answare_c,
-            'd' => $request->answare_d,
-            'e' => $request->answare_e
+        $answer = [
+            'a' => $request->answer_a,
+            'b' => $request->answer_b,
+            'c' => $request->answer_c,
+            'd' => $request->answer_d,
+            'e' => $request->answer_e
         ];
         $question = new Question();
         $question->tryout_id = $request->tryout_id;
         $question->user_id = Auth::user()->id;
         $question->question = $request->question;
-        $question->answare = json_encode(array($answare));
+        $question->answer = json_encode(array($answer));
         $question->correct = $request->correct;
         $question->type = 'text';
         $question->publish = $request->publish;
@@ -102,7 +102,7 @@ class QuestionController extends Controller
             'on'=> 'on',
             'off'=> 'off'
         ];
-        foreach(json_decode($question->answare) as $key => $value){
+        foreach(json_decode($question->answer) as $key => $value){
             $answare = [
                 'a' => $value->a,
                 'b' => $value->b,
@@ -121,18 +121,18 @@ class QuestionController extends Controller
      */
     public function update(Request $request,$id)
     {
-        $answare = [
-            'a' => $request->answare_a,
-            'b' => $request->answare_b,
-            'c' => $request->answare_c,
-            'd' => $request->answare_d,
-            'e' => $request->answare_e
+        $answer = [
+            'a' => $request->answer_a,
+            'b' => $request->answer_b,
+            'c' => $request->answer_c,
+            'd' => $request->answer_d,
+            'e' => $request->answer_e
         ];
         $question = Question::find($id);
         $question->tryout_id = $request->tryout_id;
         $question->user_id = Auth::user()->id;
         $question->question = $request->question;
-        $question->answare =  json_encode(array($answare));
+        $question->answer =  json_encode(array($answer));
         $question->correct = $request->correct;
         $question->type = 'text';
         if($request->publish){

@@ -31,8 +31,8 @@
                             </div>
                             <div class="mt-5">
                                 <div>
-                                    <label for="post-form-7" class="form-label font-medium">Anware A</label>
-                                    <textarea class="editor" name="answare_a" required>{{ $answare['a'] }}</textarea>
+                                    <label for="post-form-7" class="form-label font-medium">Answer A</label>
+                                    <textarea class="editor" name="answer_a" required>{{ $answare['a'] }}</textarea>
                                     <div class="form-check mt-2">
                                         <input class="form-check-input" value="a" type="radio" name="correct" {{ $question->correct=='a' ? 'checked' : ''; }} id="flexRadioDefault1">
                                         <label class="form-check-label" for="flexRadioDefault1">
@@ -41,8 +41,8 @@
                                       </div>
                                 </div>
                                 <div class="mt-5">
-                                    <label for="post-form-7" class="form-label font-medium">Anware B</label>
-                                    <textarea class="editor" name="answare_b" required>{{ $answare['b'] }}</textarea>
+                                    <label for="post-form-7" class="form-label font-medium">Answer B</label>
+                                    <textarea class="editor" name="answer_b" required>{{ $answare['b'] }}</textarea>
                                     <div class="form-check mt-2">
                                         <input class="form-check-input" value="b" type="radio" name="correct" {{ $question->correct=='b' ? 'checked' : ''; }} id="flexRadioDefault1">
                                         <label class="form-check-label" for="flexRadioDefault1">
@@ -51,8 +51,8 @@
                                       </div>
                                 </div>
                                 <div class="mt-5">
-                                    <label for="post-form-7" class="form-label font-medium">Anware C</label>
-                                    <textarea class="editor" name="answare_c" required>{{ $answare['c'] }}</textarea>
+                                    <label for="post-form-7" class="form-label font-medium">Answer C</label>
+                                    <textarea class="editor" name="answer_c" required>{{ $answare['c'] }}</textarea>
                                     <div class="form-check mt-2">
                                         <input class="form-check-input" value="c" type="radio" name="correct" {{ $question->correct=='c' ? 'checked' : ''; }} id="flexRadioDefault1">
                                         <label class="form-check-label" for="flexRadioDefault1">
@@ -61,8 +61,8 @@
                                       </div>
                                 </div>
                                 <div class="mt-5">
-                                    <label for="post-form-7" class="form-label font-medium">Anware D</label>
-                                    <textarea class="editor" name="answare_d" required>{{ $answare['d'] }}</textarea>
+                                    <label for="post-form-7" class="form-label font-medium">Answer D</label>
+                                    <textarea class="editor" name="answer_d" required>{{ $answare['d'] }}</textarea>
                                     <div class="form-check mt-2">
                                         <input class="form-check-input" value="d" type="radio" name="correct" {{ $question->correct=='d' ? 'checked' : ''; }} id="flexRadioDefault1">
                                         <label class="form-check-label" for="flexRadioDefault1">
@@ -71,8 +71,8 @@
                                       </div>
                                 </div>
                                 <div class="mt-5">
-                                    <label for="post-form-7" class="form-label font-medium">Anware E</label>
-                                    <textarea class="editor" name="answare_e" required>{{ $answare['e'] }}</textarea>
+                                    <label for="post-form-7" class="form-label font-medium">Answer E</label>
+                                    <textarea class="editor" name="answer_e" required>{{ $answare['e'] }}</textarea>
                                     <div class="form-check mt-2">
                                         <input class="form-check-input" value="e" type="radio" name="correct" {{ $question->correct=='e' ? 'checked' : ''; }} id="flexRadioDefault1">
                                         <label class="form-check-label" for="flexRadioDefault1">
