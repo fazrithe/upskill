@@ -28,39 +28,42 @@
             </div>
           </div>
           <div class="col-8">
+            {!! Form::open(array('route' => 'tryouts.answer','method'=>'POST','enctype'=>'multipart/form-data')) !!}
+            @csrf
             @foreach($data as $key => $value)
 
                 {!! $value->question !!}
-                <input type="hidden" type="number_page" value="{{ $data->currentPage(); }}">
-                @foreach(json_decode($value->answer) as $value)
+                <input type="hidden" type="question_id_{{$value->id}}" value="{{ $value->id }}">
+                <input type="hidden" type="question_number_{{$value->id}}" value="{{ $data->currentPage(); }}">
+                @foreach(json_decode($value->answer) as $value_answer)
                 <div class="mt-4">
-                    <input name="answer" value="a" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                    <input name="answer_{{$value->id}}" value="a" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
                     <label class="form-check-label" for="flexRadioDefault1">
-                        {!! $value->a !!}
+                        {!! $value_answer->a !!}
                     </label>
                 </div>
                 <div class="mt-4">
-                <input name="answer" value="b" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <input name="answer_{{$value->id}}" value="b" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
                 <label class="form-check-label" for="flexRadioDefault1">
-                    {!! $value->b !!}
+                    {!! $value_answer->b !!}
                 </label>
                 </div>
                 <div class="mt-4">
-                <input name="answer" value="c" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <input name="answer_{{$value->id}}" value="c" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
                 <label class="form-check-label" for="flexRadioDefault1">
-                    {!! $value->c !!}
+                    {!! $value_answer->c !!}
                 </label>
                 </div>
                 <div class="mt-4">
-                <input name="answer" value="d" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <input name="answer_{{$value->id}}" value="d" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
                 <label class="form-check-label" for="flexRadioDefault1">
-                    {!! $value->d !!}
+                    {!! $value_answer->d !!}
                 </label>
                 </div>
                 <div class="mt-4">
-                <input name="answer" value="e" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <input name="answer_{{$value->id}}" value="e" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
                 <label class="form-check-label" for="flexRadioDefault1">
-                    {!! $value->e !!}
+                    {!! $value_answer->e !!}
                 </label>
                 </div>
                 <div class="row mt-4">
