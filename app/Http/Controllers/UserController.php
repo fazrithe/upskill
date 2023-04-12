@@ -156,4 +156,48 @@ class UserController extends Controller
         return redirect()->route('users')
                         ->with('success','User deleted successfully');
     }
+
+     /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function profile($id)
+    {
+        $user = User::find($id);
+        $roles = Role::pluck('name','name')->all();
+        $userRole = $user->roles->pluck('name','name')->all();
+        $gender = [
+            'male'=>'Male',
+            'famale'=>'Famale'
+        ];
+        $status = [
+            '1'=> 'Active',
+            '0'=> 'Non Active'
+        ];
+        return view('pages.users.profile',compact('user','roles','userRole','gender','status'));
+    }
+
+      /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function profileUpdate(Request $request, $id)
+    {
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email,'.$id
+        ]);
+
+        $input = $request->all();
+
+        $user = User::find($id);
+        $user->update($input);
+
+        return back()->with('success','User updated successfully');
+    }
 }

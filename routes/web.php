@@ -45,6 +45,8 @@ Route::middleware('auth')->group(function() {
     Route::delete('users-delete/{id}', [UserController::class, 'destroy'])->name('users.destroy');
     Route::get('users-show/{id}', [UserController::class, 'show'])->name('users.show');
     Route::get('users-search/search', [UserController::class, 'search'])->name('users.search');
+    Route::get('users-prodile/{id}', [UserController::class, 'profile'])->name('users.profile');
+    Route::patch('users-profile-update/{id}', [UserController::class, 'profileUpdate'])->name('users.profile.update');
 
     //roles
     Route::get('roles', [RoleController::class, 'index'])->name('roles');
