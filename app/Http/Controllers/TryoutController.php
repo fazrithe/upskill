@@ -166,11 +166,11 @@ class TryoutController extends Controller
      */
     public function list(Request $request)
     {
-        $data = Tryout::with('user')->orderBy('id','DESC')->get();
+        $data = Tryout::with('user')->orderBy('id','DESC')->paginate(6);
         $categories = FileCategory::all();
         $search = '';
         return view('pages.tryouts.list',compact('data','search','categories'))
-            ->with('i', ($request->input('page', 1) - 1) * 10);
+            ->with('i', ($request->input('page', 1) - 1) * 6);
     }
 
     /**
