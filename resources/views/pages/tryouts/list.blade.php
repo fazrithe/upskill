@@ -17,7 +17,11 @@
             <div class="intro-y col-span-12 md:col-span-6 xl:col-span-4 box">
                 <div class="flex items-center border-b border-slate-200/60 dark:border-darkmode-400 px-5 py-4">
                     <div class="w-10 h-10 flex-none image-fit">
+                        @if($value->user->photo == null)
+                        <img alt="Icewall Tailwind HTML Admin Template" class="rounded-full" src="{{ asset('dist/images/' . $fakers[0]['photos'][0]) }}">
+                        @else
                         <img alt="Icewall Tailwind HTML Admin Template" class="rounded-full" src="{{ $value->user->photo }}">
+                        @endif
                     </div>
                     <div class="ml-3 mr-auto">
                         <a href="" class="font-medium">{{ $value->user->name }}</a>

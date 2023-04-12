@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\Session\Session;
 use App\Models\UserAnswer;
 use Faker\Provider\UserAgent;
+use App\Models\UserAnswerScore;
 
 class TryoutController extends Controller
 {
@@ -251,6 +252,25 @@ class TryoutController extends Controller
             $answer->save();
             return redirect(url($request->question_url));
         }
+    }
+
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function finish(Request $request)
+    {
+        $totalScore = UserAnswer::where('tryout_id', $request->tryout_id)->where('user_id', Auth::user()->id)->sum('score');
+        $score = new UserAnswerScore();
+        $score->tryout_id   = $request->tryout_id;
+        $score->user_id     = Auth::user()->id;
+        $score->total_score = $totalScore;
+        $score->save();
+
+        $data = UserAnswerScore::where('tryout_id', $request->tryout_id)->where('user_id', Auth::user()->id)->with('user')->first();
+        return view('pages.tryouts.user_score',compact('data'));
     }
 
 }

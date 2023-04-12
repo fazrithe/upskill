@@ -75,6 +75,7 @@ Route::middleware('auth')->group(function() {
     Route::get('tryouts-view/{id}', [TryoutController::class, 'view'])->name('tryouts.view');
     Route::get('tryouts-test/{id}', [TryoutController::class, 'test'])->name('tryouts.test');
     Route::post('tryout-answer', [TryoutController::class, 'answer'])->name('tryouts.answer');
+    Route::post('tryout-finish', [TryoutController::class, 'finish'])->name('tryouts.finish');
 
     Route::get('questions/{id}', [QuestionController::class, 'index'])->name('questions');
     Route::get('questions-create/{id}', [QuestionController::class, 'create'])->name('questions.create');

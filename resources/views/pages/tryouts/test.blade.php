@@ -30,7 +30,13 @@
           </div>
           <div class="col-8">
             <div class="text-right">
-                <a href="{{ route('tryouts.lists') }}" class="btn btn-success">Finish</a>
+                {!! Form::open(array('route' => 'tryouts.finish','method'=>'POST','enctype'=>'multipart/form-data')) !!}
+                @csrf
+                @foreach($data as $key => $value)
+                    <input type="hidden" name="tryout_id" value="{{ $value->tryout_id }}">
+                    <button class="btn btn-success">Finish</button>
+                @endforeach
+                {!! Form::close() !!}
             </div>
             {!! Form::open(array('route' => 'tryouts.answer','method'=>'POST','enctype'=>'multipart/form-data')) !!}
             @csrf
@@ -43,7 +49,7 @@
                 <input type="hidden" name="question_url" value="{{ $data->nextPageUrl(); }}">
                 @foreach(json_decode($value->answer) as $value_answer)
                 <div class="mt-4">
-                    <input name="answer" value="a" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                    <input name="answer" value="a" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" required>
                     <label class="form-check-label" for="flexRadioDefault1">
                         {!! $value_answer->a !!}
                     </label>
@@ -84,6 +90,7 @@
                 @endforeach
 
             @endforeach
+            {!! Form::close() !!}
               <!-- BEGIN: Pagination -->
         {{-- <div class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap items-center">
             <nav class="w-full sm:w-auto sm:mr-auto">
