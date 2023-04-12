@@ -15,7 +15,7 @@ class SideMenu
         return [
             'dashboard' => [
                 'icon' => 'home',
-                'route_name' => 'dashboard-overview-1',
+                'route_name' => 'dashboard',
                 'params' => [
                     'layout' => 'side-menu',
                 ],
@@ -68,38 +68,6 @@ class SideMenu
                     ],
                 ]
             ],
-            'profile' => [
-                'icon' => 'trello',
-                'title' => 'Profile',
-                'sub_menu' => [
-                    'profile-overview-1' => [
-                        'icon' => '',
-                        'route_name' => 'profile-overview-1',
-                        'params' => [
-                            'layout' => 'side-menu'
-                        ],
-                        'title' => 'Overview 1'
-                    ],
-                    'profile-overview-2' => [
-                        'icon' => '',
-                        'route_name' => 'profile-overview-2',
-                        'params' => [
-                            'layout' => 'side-menu'
-                        ],
-                        'title' => 'Overview 2'
-                    ],
-                    'profile-overview-3' => [
-                        'icon' => '',
-                        'route_name' => 'profile-overview-3',
-                        'params' => [
-                            'layout' => 'side-menu'
-                        ],
-                        'title' => 'Overview 3'
-                    ]
-                ]
-            ],
-            'devider',
-
         ];
     }
 }
