@@ -116,7 +116,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="" class="dropdown-item hover:bg-white/5">
+                        <a href="{{ Route('users.password',Auth::user()->id) }}" class="dropdown-item hover:bg-white/5">
                             <i data-feather="lock" class="w-4 h-4 mr-2"></i> Reset Password
                         </a>
                     </li>

@@ -1,7 +1,7 @@
 @extends('../layout/' . $layout)
 
 @section('subhead')
-    <title>Add New Post - Icewall - Tailwind HTML Admin Template</title>
+    <title>{{ Route::current()->getName() }}</title>
 @endsection
 
 @section('subcontent')

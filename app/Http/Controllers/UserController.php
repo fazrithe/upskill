@@ -176,7 +176,7 @@ class UserController extends Controller
             '1'=> 'Active',
             '0'=> 'Non Active'
         ];
-        return view('pages.users.profile',compact('user','roles','userRole','gender','status'));
+        return view('pages.users.profile',compact('user','gender'));
     }
 
       /**
@@ -198,6 +198,54 @@ class UserController extends Controller
         $user = User::find($id);
         $user->update($input);
 
-        return back()->with('success','User updated successfully');
+        return back()->with('success','Profile updated successfully');
+    }
+
+     /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function password($id)
+    {
+        $user = User::find($id);
+        $roles = Role::pluck('name','name')->all();
+        $userRole = $user->roles->pluck('name','name')->all();
+        $gender = [
+            'male'=>'Male',
+            'famale'=>'Famale'
+        ];
+        $status = [
+            '1'=> 'Active',
+            '0'=> 'Non Active'
+        ];
+        return view('pages.users.password',compact('user','gender'));
+    }
+
+     /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function passwordUpdate(Request $request, $id)
+    {
+        $this->validate($request, [
+            'password' => 'same:confirm-password'
+        ]);
+
+        $input = $request->all();
+        if(!empty($input['password'])){
+            $input['password'] = Hash::make($input['password']);
+        }else{
+            $input = Arr::except($input,array('password'));
+        }
+
+        $user = User::find($id);
+        $user->update($input);
+
+        return back()->with('success','Password updated successfully');
     }
 }

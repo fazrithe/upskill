@@ -47,6 +47,8 @@ Route::middleware('auth')->group(function() {
     Route::get('users-search/search', [UserController::class, 'search'])->name('users.search');
     Route::get('users-prodile/{id}', [UserController::class, 'profile'])->name('users.profile');
     Route::patch('users-profile-update/{id}', [UserController::class, 'profileUpdate'])->name('users.profile.update');
+    Route::get('users-password/{id}', [UserController::class, 'password'])->name('users.password');
+    Route::patch('users-password-update/{id}', [UserController::class, 'passwordUpdate'])->name('users.password.update');
 
     //roles
     Route::get('roles', [RoleController::class, 'index'])->name('roles');

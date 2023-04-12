@@ -6,7 +6,7 @@
 
 @section('subcontent')
     <div class="intro-y flex items-center mt-8">
-        <h2 class="text-lg font-medium mr-auto">User Create</h2>
+        <h2 class="text-lg font-medium mr-auto">User Password</h2>
     </div>
 
     <div class="grid grid-cols-12 gap-6 mt-5">
@@ -26,21 +26,22 @@
                   </ul>
                 </div>
                 @endif
-                {!! Form::model($role, ['method' => 'PATCH','route' => ['roles.update', $role->id]]) !!}
+                @if ($message = Session::get('success'))
+                <div class="alert alert-success">
+                    <strong>{{ $message }}</strong>
+                </div>
+                @endif
+                {!! Form::model($user, ['method' => 'PATCH','route' => ['users.password.update', $user->id]]) !!}
                 @csrf
                 <div id="input" class="p-5">
                     <div class="preview">
-                        <div>
-                            <label for="regular-form-1" class="form-label">Name</label>
-                            {!! Form::text('name', $role->name, array('placeholder' => 'Name','class' => 'form-control')) !!}
+                        <div class="mt-3">
+                            <label for="regular-form-4" class="form-label">Password</label>
+                            {!! Form::password('password', array('placeholder' => 'Password','class' => 'form-control')) !!}
                         </div>
                         <div class="mt-3">
-                            <label for="regular-form-2" class="form-label">Permission</label><br>
-                            @foreach($permission as $value)
-                                <label>{{ Form::checkbox('permission[]', $value->id, in_array($value->id, $rolePermissions) ? true : false, array('class' => 'name')) }}
-                                {{ $value->name }}</label>
-                            <br/>
-                            @endforeach
+                            <label for="regular-form-4" class="form-label">Confirm Password</label>
+                            {!! Form::password('confirm-password', array('placeholder' => 'Confirm Password','class' => 'form-control')) !!}
                         </div>
                         <button class="btn btn-primary mt-5">Save</button>
                     </div>
