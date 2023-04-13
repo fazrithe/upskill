@@ -49,31 +49,31 @@
                 <input type="hidden" name="question_url" value="{{ $data->nextPageUrl(); }}">
                 @foreach(json_decode($value->answer) as $value_answer)
                 <div class="mt-4">
-                    <input name="answer" value="a" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" required>
+                    <input name="answer" value="a" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" {{ $value->user_answer=='a' ? 'checked' : ''; }} required>
                     <label class="form-check-label" for="flexRadioDefault1">
                         {!! $value_answer->a !!}
                     </label>
                 </div>
                 <div class="mt-4">
-                <input name="answer" value="b" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <input name="answer" value="b" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" {{ $value->user_answer=='b' ? 'checked' : ''; }}>
                 <label class="form-check-label" for="flexRadioDefault1">
                     {!! $value_answer->b !!}
                 </label>
                 </div>
                 <div class="mt-4">
-                <input name="answer" value="c" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <input name="answer" value="c" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" {{ $value->user_answer=='c' ? 'checked' : ''; }}>
                 <label class="form-check-label" for="flexRadioDefault1">
                     {!! $value_answer->c !!}
                 </label>
                 </div>
                 <div class="mt-4">
-                <input name="answer" value="d" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <input name="answer" value="d" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" {{ $value->user_answer=='d' ? 'checked' : ''; }}>
                 <label class="form-check-label" for="flexRadioDefault1">
                     {!! $value_answer->d !!}
                 </label>
                 </div>
                 <div class="mt-4">
-                <input name="answer" value="e" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <input name="answer" value="e" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" {{ $value->user_answer=='e' ? 'checked' : ''; }}>
                 <label class="form-check-label" for="flexRadioDefault1">
                     {!! $value_answer->e !!}
                 </label>
