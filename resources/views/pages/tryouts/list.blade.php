@@ -50,20 +50,10 @@
                     </div>
                     <a href="" class="block font-medium text-base mt-5">{{ $value->name }}</a>
                 </div>
-                <div class="flex items-center px-5 py-3 border-t border-slate-200/60 dark:border-darkmode-400">
-                    <div class="intro-x flex mr-2">
-                        <div class="intro-x w-8 h-8 image-fit">
-                            <img alt="Icewall Tailwind HTML Admin Template" class="rounded-full border border-white zoom-in tooltip" src="" title="">
-                        </div>
-                    </div>
-                    <a href="" class="intro-x w-8 h-8 flex items-center justify-center rounded-full text-primary bg-primary/10 dark:bg-darkmode-300 dark:text-slate-300 ml-auto tooltip" title="Share">
-                        <i data-feather="share-2" class="w-3 h-3"></i>
-                    </a>
-                </div>
                 <div class="px-5 pt-3 pb-5 border-t border-slate-200/60 dark:border-darkmode-400">
                     <div class="w-full flex text-slate-500 text-xs sm:text-sm">
                         <div class="mr-2">
-                            Have Done: <span class="font-medium"></span>
+                            Have Done: <span class="font-medium">{{ getScore($value->id) }}</span>
                         </div>
                     </div>
                     <div class="w-full flex items-center mt-3">

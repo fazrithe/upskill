@@ -5,9 +5,6 @@
 @endsection
 
 @section('content')
-    <div class="flex items-center mt-8">
-        <h2 class="intro-y text-lg font-medium mr-auto">Wizard Layout</h2>
-    </div>
     <!-- BEGIN: Wizard Layout -->
     <div class="intro-y box py-10 sm:py-20 mt-5">
         <div class="px-5 mt-10">

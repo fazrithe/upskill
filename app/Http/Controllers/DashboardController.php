@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\UserAnswerScore;
+use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
@@ -12,14 +14,10 @@ class DashboardController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function dashboard()
+    public function dashboard(Request $request)
     {
-        return view('pages/dashboard', [
-            // Specify the base layout.
-            // Eg: 'side-menu', 'simple-menu', 'top-menu', 'login'
-            // The default value is 'side-menu'
-
-            // 'layout' => 'side-menu'
-        ]);
+        $data_score = UserAnswerScore::with('user')->orderBy('total_score','DESC')->paginate(5);
+        return view('pages/dashboard',compact('data_score'))
+        ->with('i', ($request->input('page', 1) - 1) * 5);
     }
 }

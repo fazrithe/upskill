@@ -61,7 +61,7 @@
                             {!! Form::submit('Delete', ['class' => 'btn btn-danger py-1 px-2 mr-2']) !!}
                         {!! Form::close() !!}
                         <a href="{{ route('users.edit',$user->id) }}" class="btn btn-primary py-1 px-2 mr-2">Edit</a>
-                        <a href="{{ route('users.show',$user->id) }}" class="btn btn-outline-secondary py-1 px-2">Profile</a>
+                        <a href="{{ route('users.profile',$user->id) }}" class="btn btn-outline-secondary py-1 px-2">Profile</a>
                     </div>
                 </div>
             </div>
